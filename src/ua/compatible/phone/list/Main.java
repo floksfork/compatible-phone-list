@@ -58,8 +58,8 @@ public class Main {
 
             int k = Collections.binarySearch(tail, head, new Comparator<String>() {
                 @Override
-                public int compare(String o1, String o2) {
-                    if (o1.startsWith(o2)) return 0;
+                public int compare(String el, String key) {
+                    if (el.startsWith(key)) return 0;
                     else return -1;
                 }
             });
