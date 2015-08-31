@@ -1,46 +1,35 @@
-package ua.compatible.phone.list;
-
+import java.io.IOException;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         List<List<String>> phoneLists = inputData();
-
-        long startTime = System.currentTimeMillis();
 
         for (List<String> phoneList : phoneLists) {
             System.out.println(isCompatible(phoneList));
         }
-
-        System.out.println("TIME = " + (System.currentTimeMillis() - startTime) + "ms");
     }
 
-    private static List<List<String>> inputData(){
-        System.out.println("Enter something here : ");
-        Scanner scanIn = new Scanner(System.in);
+    private static List<List<String>> inputData() throws IOException {
+        Scanner in = new Scanner(System.in);
 
-        int testNum = scanIn.nextInt();
+        int testNum = in.nextInt();
         List<List<String>> phoneLists = new ArrayList<List<String>>(testNum);
 
         for (int i = 0; i < testNum; i++) {
-            System.out.println("Enter number of phones : ");
-            int numOfPhones = scanIn.nextInt();
+            int numOfPhones = in.nextInt();
 
             List<String> list = new ArrayList<String>(numOfPhones);
             for (int j = 0; j < numOfPhones; j++) {
-                System.out.println("->");
-                String number = scanIn.next();
-
+                String number = in.next();
                 list.add(number);
             }
 
             phoneLists.add(list);
         }
 
-        scanIn.close();
-
-        System.out.println(phoneLists);
+        in.close();
 
         return phoneLists;
     }
@@ -73,7 +62,7 @@ public class Main {
     }
 
     private static void ascSort(List<String> list) {
-        list.sort(new Comparator<String>() {
+        Collections.sort(list, new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
                 if (o1.length() < o2.length()) return -1;
@@ -83,3 +72,4 @@ public class Main {
         });
     }
 }
+
