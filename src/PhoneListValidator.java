@@ -35,12 +35,13 @@ public class PhoneListValidator {
     }
 
     private static String isCompatible(List<String> list) {
-        ascSort(list);
+        Collections.sort(list);
 
         return checkCompatibility(list);
     }
 
     private static String checkCompatibility(List<String> list) {
+        System.out.println(list);
         for (int i = 0; i < list.size(); i++) {
             String head = list.get(i);
             List<String> tail = list.subList(i + 1, list.size());
@@ -49,7 +50,7 @@ public class PhoneListValidator {
                 @Override
                 public int compare(String el, String key) {
                     if (el.startsWith(key)) return 0;
-                    else return -1;
+                    else return el.compareTo(key);
                 }
             });
 
@@ -60,16 +61,4 @@ public class PhoneListValidator {
 
         return "YES";
     }
-
-    private static void ascSort(List<String> list) {
-        Collections.sort(list, new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                if (o1.length() < o2.length()) return -1;
-                else if (o1.length() > o2.length()) return 1;
-                else return o1.compareTo(o2);
-            }
-        });
-    }
 }
-
