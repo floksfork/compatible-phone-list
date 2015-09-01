@@ -41,7 +41,6 @@ public class PhoneListValidator {
     }
 
     private static String checkCompatibility(List<String> list) {
-        System.out.println(list);
         for (int i = 0; i < list.size(); i++) {
             String head = list.get(i);
             List<String> tail = list.subList(i + 1, list.size());
